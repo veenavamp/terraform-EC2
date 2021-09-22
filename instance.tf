@@ -43,6 +43,6 @@ data "aws_subnet_ids" "public" {
 }
 
 locals {
-   template_file_int  = templatefile("./install_ubuntu_docker.tpl", {})
+   template_file_int  = templatefile("./install_docker_kubectl.tpl", {})
 }
 
