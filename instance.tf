@@ -4,7 +4,7 @@ resource "aws_instance" "workstation" {
   #for_each      = data.aws_subnet_ids.selected.ids
 
   # the VPC subnet
-  subnet_id = tolist(data.aws_subnet_ids.var.subnet.ids)[0]
+  subnet_id = tolist(data.aws_subnet_ids.public.ids)[0]
 
   # the security group
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
@@ -43,6 +43,6 @@ data "aws_subnet_ids" "public" {
 }
 
 locals {
-   template_file_int  = templatefile("./docker_ubuntu_install.tpl")
+   template_file_int  = templatefile("./install_ubuntu_docker.tpl", {})
 }
 
